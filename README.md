@@ -35,3 +35,10 @@
 - Three reels stop event is independent
 - Reels stops randomly
 - Reels are head-tail connected ban structure, with length of L1, L2 and L3
+- When getting full 3x3, odds will NOT contain other 2x2
+- RTP 0.95, multiplier {0: 0.25, 1: 0.55, 2: 1, 3: 3, 4: 5}, and win rate > 0.55 will encounter "floating point precision error" → Convert them into integers
+   - RTP and multiplier 20x to make it integer
+   - Win rate: hits/N > 55/100 → 100 x hits > 55 x N
+
+### Build RTP and win rate evaluation code
+
