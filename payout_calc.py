@@ -26,10 +26,14 @@ def payout_calc(col1, col2, col3) -> int:
             if col1[0] == check_value and col1[1] == check_value:
                 return MULTIPLIER[display_panel[1][1]]
 
+        # Down check
         if col2[2] != check_value:
             return 0
         else:
-            pass
+            if col1[1] == check_value and col1[2] == check_value:
+                return MULTIPLIER[display_panel[1][1]]
+            else:
+                return 0
 
 if __name__ == '__main__':
     t = payout_calc((4, 4, 4), (4, 4, 4), (4, 4, 4))
