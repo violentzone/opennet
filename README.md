@@ -36,9 +36,12 @@
 - Reels stops randomly
 - Reels are head-tail connected ban structure, with length of L1, L2 and L3
 - When getting full 3x3, odds will NOT contain other 2x2
-- RTP 0.95, multiplier {0: 0.25, 1: 0.55, 2: 1, 3: 3, 4: 5}, and win rate > 0.55 will encounter "floating point precision error" → Convert them into integers
-   - RTP and multiplier 20x to make it integer
+- RTP 0.95, multiplier {0: 0.25, 1: 0.55, 2: 1, 3: 3, 4: 5}, and win rate > 0.55 will encounter "floating point precision error" → Convert them into integers(20x)
+   - N(all situations) = L1 x L2 x L3
+   - RTP = 0.95 → pay 20 for a spin, expect to get 19 back → pay_sum = 19 x N (all situations)
    - Win rate: hits/N > 55/100 → 100 x hits > 55 x N
+- There shall be one chance of 3 x 3 of symbol "4" to give player greater hope 
 
-### Build RTP and win rate evaluation code
+### Build method that calculates payout of display area by distinct column
+payout_calc.py
 

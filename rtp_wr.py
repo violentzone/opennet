@@ -1,2 +1,0 @@
-from itertools import product
-
