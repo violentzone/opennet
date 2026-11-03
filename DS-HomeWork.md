@@ -52,3 +52,6 @@
 7. The reels do **not** need to be of equal length, nor is there any limit on their lengths.  
    You can imagine them as being placed on large, possibly uneven, rotating drums.
 
+
+
+
