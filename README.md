@@ -52,5 +52,9 @@
     - pay_sum: 161504
     - pay_sum / (N x 19) = 0.6149
     - win_ratio: 34.8%
-4. By testing, adding symbol 2 increase RTP too rapid, therefore the goal here is to add symbol 1 and symbol 0 to reels, strategy here is making reel 1 and reel 2 identical for simplicity, then search through reel 3 to get answer
+4. By testing, adding symbol 2 increase RTP too rapid, therefore the goal here is to add symbol 1 and symbol 0 to reels
+   - Strategy: 
+     1. Add symbol 0 and symbol 1 from 1 ~ 30 to reel a and reel 2
+     2. Because pay_sum = N * 19, adding one symbol to reel 3 will require additional L1 x L2 * 19 on pay_sum
+     3. Check if reel 3 able to add fix integers on 0 and 1
 5. 

@@ -27,7 +27,7 @@ def get_parameters_from_reels(reel1: list[int], reel2: list[int], reel3: list[in
     w_rate = w / n
     return pay_sum, n, w_rate
 
-
+def grid_answer
 
 
 
