@@ -40,7 +40,9 @@
    - N(all situations) = L1 x L2 x L3
    - RTP = 0.95 → pay 20 for a spin, expect to get 19 back → pay_sum = 19 x N (all situations)
    - Win rate: hits/N > 55/100 → 100 x hits > 55 x N
-- There shall be one chance of 3 x 3 of symbol "4" to give player greater hope 
+- There shall be at least of one 3 x3 combination of each symbol → reels start building from [0] x 3 + [1] x3 + [2] x 3 + [3] x 3 + [4] x 3
+- In order to get RTP of 0.95, adding symbol 0 and symbol 1 (multiply < 1) to get RTP to 0.95 and win rate 0.55.
+- To simplify calculate, 
 
 ### Build method that calculates payout of display area by distinct column
 [payout_calc.py](payout_calc.py)

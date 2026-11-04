@@ -43,5 +43,4 @@ def payout_calc(col1, col2, col3) -> int:
                 return_coins += 0
         return return_coins
 if __name__ == '__main__':
-    t = payout_calc((4, 4, 4), (4, 4, 4), (4, 4, 4))
-    print(t)
+    print([0] * 3 + [1] * 3)
