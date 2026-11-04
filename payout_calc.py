@@ -19,22 +19,29 @@ def payout_calc(col1, col2, col3) -> int:
     if all(v == check_value for t in display_panel for v in t):
         return MULTIPLIER[display_panel[1][1]] * 5
     else:
-        # Up check
-        if col2[0] != check_value:
-            return 0
-        else:
+        return_coins = 0
+        # Up check and calculate
+        if col2[0] == check_value:
+            # Left 2 x 2
             if col1[0] == check_value and col1[1] == check_value:
-                return MULTIPLIER[display_panel[1][1]]
+                return_coins += MULTIPLIER[display_panel[1][1]]
+            # Right 2 x 2
+            if col3[0] == check_value and col3[1] == check_value:
+                return_coins += MULTIPLIER[display_panel[1][1]]
 
         # Down check
         if col2[2] != check_value:
-            return 0
+            return_coins += 0
         else:
+            # Left 2 x 2
             if col1[1] == check_value and col1[2] == check_value:
-                return MULTIPLIER[display_panel[1][1]]
+                return_coins += MULTIPLIER[display_panel[1][1]]
+            # Right 2 x 2
+            if col3[1] == check_value and col3[2] == check_value:
+                return_coins += MULTIPLIER[display_panel[1][1]]
             else:
-                return 0
-
+                return_coins += 0
+        return return_coins
 if __name__ == '__main__':
     t = payout_calc((4, 4, 4), (4, 4, 4), (4, 4, 4))
     print(t)

@@ -43,5 +43,10 @@
 - There shall be one chance of 3 x 3 of symbol "4" to give player greater hope 
 
 ### Build method that calculates payout of display area by distinct column
-payout_calc.py
+[payout_calc.py](payout_calc.py)
 
+### Build method iterate through possibilities
+1. Strategy:
+    - Simbol 0 & 1 build fundamental reel, other symbol exceeds RTA 0.95
+    - Fix reel 1 and reel 2, then calculate reel 3 
+    - 
