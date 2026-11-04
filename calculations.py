@@ -42,5 +42,28 @@ def payout_calc(col1, col2, col3) -> int:
             else:
                 return_coins += 0
         return return_coins
+
+def get_all_reel_display(reel_list):
+    """
+    Gets all displays of a reel's symbols
+    Args:
+        reel_list: The reel's symbol list
+
+    Returns:
+        All symbols conformation in display panel
+    """
+    length = len(reel_list)
+    all_stops = [[reel_list[i], reel_list[(i + 1) % length], reel_list[(i + 2) % length]] for i in range(length)]
+    return all_stops
+
 if __name__ == '__main__':
-    print([0] * 3 + [1] * 3)
+    from itertools import product
+    reel1 = reel2 = reel3 =[0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4]
+    po1 = po2 = po3 = get_all_reel_display(reel1)
+    total_payout = 0
+    for x, y, z in product(po1, po2, po3):
+        pay = payout_calc(x, y, z)
+        print(x, y, z)
+        total_payout += pay
+    print('N: ', len(po1) ** 3)
+    print('total_payout: ', total_payout)

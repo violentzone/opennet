@@ -28,8 +28,6 @@
 7. The reels do **not** need to be of equal length, nor is there any limit on their lengths.  
    You can imagine them as being placed on large, possibly uneven, rotating drums.
 
-## Solution
-
 ### Assumptions
 
 - Three reels stop event is independent
@@ -39,16 +37,20 @@
 - RTP 0.95, multiplier {0: 0.25, 1: 0.55, 2: 1, 3: 3, 4: 5}, and win rate > 0.55 will encounter "floating point precision error" → Convert them into integers(20x)
    - N(all situations) = L1 x L2 x L3
    - RTP = 0.95 → pay 20 for a spin, expect to get 19 back → pay_sum = 19 x N (all situations)
-   - Win rate: hits/N > 55/100 → 100 x hits > 55 x N
-- There shall be at least of one 3 x3 combination of each symbol → reels start building from [0] x 3 + [1] x3 + [2] x 3 + [3] x 3 + [4] x 3
-- In order to get RTP of 0.95, adding symbol 0 and symbol 1 (multiply < 1) to get RTP to 0.95 and win rate 0.55.
-- To simplify calculate, 
+- There shall be at least of one 3 x3 combination of each symbol, and count of symbol 2 > count of symbol 3 > count of symbol 4 → reels start building from [0] x 6 + [1] x 6 + [2] x 5 + [3] x 4 + [4] x 3
 
-### Build method that calculates payout of display area by distinct column
-[payout_calc.py](payout_calc.py)
-
-### Build method iterate through possibilities
-1. Strategy:
-    - Simbol 0 & 1 build fundamental reel, other symbol exceeds RTA 0.95
-    - Fix reel 1 and reel 2, then calculate reel 3 
-    - 
+### Solution
+1. Build method that calculates reward amount from display panel [payout_calc.py](calculations.py)
+2. Build method that generate all three symbol on display panel of simgle reel [get_all_reel_display](calculations.py)
+3. After first calculation(reels with init state [0] x 7 + [1] x 6 + [2] x 5 + [3] x 4 + [4] x 3):
+    ```
+    r1 = r2 = r3 = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4]
+    pay_sum, N, win_rate = get_parameters_from_reels(r1, r2, r3)
+    print('pay_sum: ', pay_sum, 'N: ', N, 'win_rate: ', win_rate, 'calculate: ', pay_sum / (N * 19))
+    ```
+    - N: 13824
+    - pay_sum: 161504
+    - pay_sum / (N x 19) = 0.6149
+    - win_ratio: 34.8%
+4. By testing, adding symbol 2 increase RTP too rapid, therefore the goal here is to add symbol 1 and symbol 0 to reels, strategy here is making reel 1 and reel 2 identical for simplicity, then search through reel 3 to get answer
+5. 
