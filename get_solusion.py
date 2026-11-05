@@ -73,7 +73,7 @@ def grid_answer(init_reel_state: list[int], max_add: int = 30) -> Optional[tuple
             diff_0 = pay_add(reel1_2, 0) - threshold
             diff_1 = pay_add(reel1_2, 1) - threshold
             pay_sum, n, _ = get_parameters_from_reels(reel1_2, reel1_2, init_reel_state)
-            added = solve_reel3(pay_sum - 19 * n, diff_0, diff_1, max_add)
+            added = solve_reel3(pay_sum - 19 * n, diff_0, diff_1)
             if added is None:
                 continue
             reel3 = sorted(init_reel_state + [0] * added[0] + [1] * added[1])

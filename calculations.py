@@ -72,7 +72,7 @@ def pay_add(reel1_2: list[int], symbol: int) -> int:
     triple = {s: 0 for s in MULTIPLIER}
     for top, mid, bot in get_all_reel_display(reel1_2):
         if top == mid:
-            pair[top] += 1
+            pair[top] += 1  # No need to calculate bottom pair match, just x2 (top occurrence == bottom occurrence)
             if mid == bot:
                 triple[top] += 1
     length = len(reel1_2)
